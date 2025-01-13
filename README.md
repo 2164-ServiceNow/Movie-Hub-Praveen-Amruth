@@ -28,7 +28,7 @@
 **Development Environment Setup:**
 
 *   Detailed instructions for setting up the development environment (e.g., Node.js version, npm/yarn commands, AngularJS CLI commands if applicable).
-*   Precise steps to install all project dependencies.
+*   Precise steps to install all project dependencies
 
 **Collaborators:**
 
