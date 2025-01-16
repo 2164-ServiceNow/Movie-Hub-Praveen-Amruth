@@ -1,0 +1,91 @@
+/* Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black; /* Black background for the application */
+    color: white; /* White text for readability */
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1a1a1a; /* Darker black for navbar */
+    padding: 10px 20px;
+    border-bottom: 1px solid #333;
+}
+
+.navbar-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.logo-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff9900; /* Vibrant orange for MovieHub title */
+}
+
+.navbar-search {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+}
+
+.search-button {
+    margin-left: -40px; /* Overlap the button with the search bar */
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.navbar-options {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-option {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.navbar-option img {
+    width: 20px;
+    height: 20px;
+}
+
+.navbar-option:hover {
+    background-color: #555;
+}
