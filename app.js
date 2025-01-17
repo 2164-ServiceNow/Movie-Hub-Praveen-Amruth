@@ -1,11 +1,18 @@
 // Define the main module
-angular.module('movieHub', ['ngRoute', 'navbar'])
+angular.module('movieHub', [
+    'ngRoute', 
+    'navbar',
+    'carousel',
+    'footer',
+    'movies',
+    'topBoxOffice'
+])
 
     // Configure routes
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/', {
-                template: '<h1>Welcome to MovieHub</h1><p>Your movie hub is here!</p>'
+                template: '<carousel></carousel>'
             })
             .when('/movies', {
                 template: '<h1>Movies List</h1><p>Here, you can browse all the movies.</p>'

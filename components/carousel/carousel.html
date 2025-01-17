@@ -1,0 +1,15 @@
+<div class="carousel">
+    <div class="carousel-slide" ng-repeat="slide in $ctrl.slides" 
+         ng-class="{ active: $index === $ctrl.currentSlide }">
+        <img ng-src="{{ slide.src }}" alt="{{ slide.alt }}" />
+    </div>
+
+    <!-- Optional: Navigation Dots -->
+    <div class="carousel-dots">
+        <span ng-repeat="slide in $ctrl.slides" 
+              ng-class="{ active: $index === $ctrl.currentSlide }"
+              ng-click="$ctrl.currentSlide = $index">
+        </span>
+    </div>
+    <h1>hi</h1>
+</div>

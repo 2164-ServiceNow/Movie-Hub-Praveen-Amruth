@@ -1,0 +1,105 @@
+.movies-section {
+    padding: 20px;
+    background-color: black; /* Light blue background for the movies section */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.movies-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.pipe-icon {
+    font-size: 24px;
+    color: #007bff;
+    margin-right: 10px;
+}
+
+.movies-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    color: white;
+}
+
+.greater-icon {
+    font-size: 20px;
+    color: #007bff;
+    margin-left: 5px;
+}
+
+.movies-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    background-color: black; /* Black background for the movies list */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.movie-card {
+    width: 200px;
+    background-color: black; /* Black background for individual cards */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1); /* Subtle white shadow */
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    color: white; /* White text for readability */
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3); /* Brighter shadow on hover */
+}
+
+.movie-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-bottom: 2px solid #007bff; /* Blue border below the image */
+}
+
+.movie-details {
+    padding: 10px;
+}
+
+.movie-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 5px 0;
+    color: #fff;
+}
+
+.movie-description {
+    font-size: 14px;
+    color: #ccc; /* Light gray for the description */
+    margin: 5px 0;
+    /* Limit description to 4 lines with ellipsis */
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.movie-rating {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 5px 0;
+    color: #ffcc00; /* Gold color for ratings */
+}
+
+.movie-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.movie-link:hover {
+    text-decoration: underline;
+}
