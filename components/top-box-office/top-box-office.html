@@ -1,0 +1,20 @@
+<div class="top-box-office-section">
+    <div class="top-box-office-header">
+      <span class="pipe-icon">|</span>
+      <h2 class="top-box-office-title">Top Box Office (US)</h2>
+      <span class="greater-icon">&gt;</span>
+    </div>
+    <div class="top-box-office-list">
+      <div class="box-office-card" ng-repeat="movie in $ctrl.movies">
+        <img class="movie-image" ng-src="{{movie.primaryImage}}" alt="{{movie.title}}" />
+        <div class="movie-details">
+          <h3 class="movie-title">{{movie.title}}</h3>
+          <p class="movie-description">{{movie.description}}</p>
+          <p class="movie-rating">Rating: {{movie.averageRating || 'N/A'}}</p>
+          <p class="movie-gross">Gross: {{movie.lifetimeGrossCurrency}} {{movie.lifetimeGrossAmount | number}}</p>
+          <a class="movie-link" ng-href="{{movie.url}}" target="_blank">View on IMDb</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
