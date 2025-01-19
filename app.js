@@ -5,7 +5,8 @@ angular.module('movieHub', [
     'carousel',
     'footer',
     'movies',
-    'topBoxOffice'
+    'topBoxOffice',
+    'moviesCarousel'
 ])
 
     // Configure routes
