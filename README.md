@@ -10,6 +10,7 @@
 *   JavaScript
 *   AngularJS (Specify Version)
 *   rapidapi.com which includes IMDb APIs
+*   https://www.freetestapi.com/api/v1/movies
 *   https://rapidapi.com/apidojo/api/imdb8/playground/apiendpoint_b0ae84ce-d9ac-4c5d-ba64-c9eee1b293f9
 
 **User Stories:** 
