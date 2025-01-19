@@ -1,0 +1,49 @@
+<div class="movies-carousel-section">
+    <!-- Animation Movies -->
+    <div class="category-section">
+        <h2 class="category-title">Animation Movies<span class="greater-icon">&gt;</span></h2>
+        <div class="movies-row animation-row">
+            <div class="movie-card" ng-repeat="movie in $ctrl.filteredMovies.animation">
+                <img ng-src="{{movie.posterURL}}" alt="{{movie.title}}" class="movie-image">
+                <p class="movie-title">{{movie.title}}</p>
+            </div>
+            <button class="scroll-button" ng-click="$ctrl.scrollRight('animation')">❯</button>
+        </div>
+    </div>
+
+    <!-- Comedy Movies -->
+    <div class="category-section">
+        <h2 class="category-title">Comedy Movies<span class="greater-icon">&gt;</span></h2>
+        <div class="movies-row comedy-row">
+            <div class="movie-card" ng-repeat="movie in $ctrl.filteredMovies.comedy">
+                <img ng-src="{{movie.posterURL}}" alt="{{movie.title}}" class="movie-image">
+                <p class="movie-title">{{movie.title}}</p>
+            </div>
+            <button class="scroll-button" ng-click="$ctrl.scrollRight('comedy')">❯</button>
+        </div>
+    </div>
+
+    <!-- Horror Movies -->
+    <div class="category-section">
+        <h2 class="category-title">Horror Movies<span class="greater-icon">&gt;</span></h2>
+        <div class="movies-row horror-row">
+            <div class="movie-card" ng-repeat="movie in $ctrl.filteredMovies.horror">
+                <img ng-src="{{movie.posterURL}}" alt="{{movie.title}}" class="movie-image">
+                <p class="movie-title">{{movie.title}}</p>
+            </div>
+            <button class="scroll-button" ng-click="$ctrl.scrollRight('horror')">❯</button>
+        </div>
+    </div>
+
+    <!-- Family Movies -->
+    <div class="category-section">
+        <h2 class="category-title">Family Movies<span class="greater-icon">&gt;</span></h2>
+        <div class="movies-row family-row">
+            <div class="movie-card" ng-repeat="movie in $ctrl.filteredMovies.family">
+                <img ng-src="{{movie.posterURL}}" alt="{{movie.title}}" class="movie-image">
+                <p class="movie-title">{{movie.title}}</p>
+            </div>
+            <button class="scroll-button" ng-click="$ctrl.scrollRight('family')">❯</button>
+        </div>
+    </div>
+</div>

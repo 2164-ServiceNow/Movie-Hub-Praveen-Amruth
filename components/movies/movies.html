@@ -1,17 +1,14 @@
 <div class="movies-section">
-    <!-- Header -->
     <div class="movies-header">
         <span class="pipe-icon">|</span>
         <h2 class="movies-title">Most Popular Movies <span class="greater-icon">&gt;</span></h2>
     </div>
 
-    <!-- Movies List -->
     <div class="movies-list">
-        <div class="movie-card" ng-repeat="movie in $ctrl.movies">
+        <div class="movie-card" ng-repeat="movie in $ctrl.filteredMovies">
             <img ng-src="{{movie.poster}}" alt="{{movie.title}}" class="movie-image">
             <div class="movie-details">
                 <h3 class="movie-title">{{movie.title}}</h3>
-                <!-- Limit description to 4 lines -->
                 <p class="movie-description">{{movie.plot}}</p>
                 <p class="movie-rating">⭐ {{movie.rating}}</p>
                 <a ng-href="{{movie.website}}" target="_blank" class="movie-link">View on IMDb</a>

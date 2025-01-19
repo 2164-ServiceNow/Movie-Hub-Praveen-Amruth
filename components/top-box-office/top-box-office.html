@@ -1,20 +1,23 @@
-<div class="top-box-office-section">
-    <div class="top-box-office-header">
-      <span class="pipe-icon">|</span>
-      <h2 class="top-box-office-title">Top Box Office (US)</h2>
-      <span class="greater-icon">&gt;</span>
+<div class="topBoxOffice-section">
+    <!-- Header -->
+    <div class="topBoxOffice-header">
+        <span class="pipe-icon">|</span>
+        <h2 class="topBoxOffice-title">Top Box Office Movies <span class="greater-icon">&gt;</span></h2>
     </div>
-    <div class="top-box-office-list">
-      <div class="box-office-card" ng-repeat="movie in $ctrl.movies">
-        <img class="movie-image" ng-src="{{movie.primaryImage}}" alt="{{movie.title}}" />
-        <div class="movie-details">
-          <h3 class="movie-title">{{movie.title}}</h3>
-          <p class="movie-description">{{movie.description}}</p>
-          <p class="movie-rating">Rating: {{movie.averageRating || 'N/A'}}</p>
-          <p class="movie-gross">Gross: {{movie.lifetimeGrossCurrency}} {{movie.lifetimeGrossAmount | number}}</p>
-          <a class="movie-link" ng-href="{{movie.url}}" target="_blank">View on IMDb</a>
-        </div>
-      </div>
-    </div>
-  </div>
   
+    <!-- Movies List -->
+    <div class="topBoxOffice-list">
+        <div class="movie-card" ng-repeat="movie in $ctrl.filteredMovies">
+            <!-- Movie Poster -->
+            <img ng-src="{{movie.poster}}" alt="{{movie.title}}" class="movie-image">
+  
+            <!-- Movie Details -->
+            <div class="movie-details">
+                <h3 class="movie-title">{{movie.title}}</h3>
+                <p class="movie-year">Year: {{movie.year}}</p>
+                <p class="movie-description">{{movie.plot}}</p>
+                <p class="movie-rating">⭐ IMDb: {{movie.rating}}</p>
+            </div>
+        </div>
+    </div>
+</div>
