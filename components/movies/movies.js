@@ -1,11 +1,12 @@
 angular.module('movies', [])
     .component('movies', {
         templateUrl: 'components/movies/movies.html',
-        controller: ['$http', '$scope', 'SearchService', function ($http, $scope, SearchService) {
+        controller: ['$http', '$scope', 'SearchService', 'FilterService', function ($http, $scope, SearchService, FilterService) {
             const vm = this;
             vm.movies = [];
             vm.filteredMovies = [];
             vm.searchQuery = '';
+            vm.showMostPopularMovies = true; // Initialize visibility flag
 
             const localImages = [
                 'assets/images/moviesimgs/img1.jpg',
@@ -59,11 +60,14 @@ angular.module('movies', [])
                 );
             });
 
+            // Listen for filter update and toggle movie section visibility
+            $scope.$on('toggleMoviesSection', function (event, isMostPopular) {
+                vm.showMostPopularMovies = isMostPopular; // Update visibility based on filter
+            });
+
             // Initialize data on component load
             vm.$onInit = function () {
                 vm.fetchMovies();
             };
         }]
     });
-
-

@@ -89,3 +89,31 @@ body {
 .navbar-option:hover {
     background-color: #555;
 }
+
+.navbar-filter {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.filter-label {
+    font-size: 14px;
+    color: white;
+    margin-right: 5px;
+}
+
+.filter-select {
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: none;
+    background-color: #333;
+    color: white;
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+}
+
+.filter-select option {
+    background-color: #333;
+    color: white;
+}
