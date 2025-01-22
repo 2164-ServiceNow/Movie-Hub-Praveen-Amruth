@@ -7,7 +7,7 @@
   
     <!-- Movies List -->
     <div class="topBoxOffice-list">
-        <div class="movie-card" ng-repeat="movie in $ctrl.filteredMovies">
+        <div class="movie-card" ng-repeat="movie in $ctrl.filteredMovies" ng-click="$ctrl.showMovieDetails(movie)">
             <!-- Movie Poster -->
             <img ng-src="{{movie.poster}}" alt="{{movie.title}}" class="movie-image">
   

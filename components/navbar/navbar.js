@@ -1,13 +1,37 @@
-angular.module('navbar', [])
-.component('navbar', {
-    templateUrl: 'components/navbar/navbar.html',
-    controller: ['SearchService', function (SearchService) {
-        const vm = this;
-        vm.searchQuery = '';
+angular.module('navbar', ['movieHub'])
+    .component('navbar', {
+        templateUrl: 'components/navbar/navbar.html',
+        controller: ['$scope', 'SearchService', 'FilterService', function ($scope, SearchService, FilterService) {
+            const vm = this;
 
-        // Update search query in SearchService
-        vm.updateSearchQuery = function () {
-            SearchService.setQuery(vm.searchQuery);
-        };
-    }]
-});
+            // Initialize variables
+            vm.searchQuery = '';
+            vm.selectedFilter = '';
+            vm.filterOptions = [
+                'Most Popular Movies',
+                'Top Box Office Movies',
+                'Animation Movies',
+                'Comedy Movies',
+                'Horror Movies',
+                'Family Movies'
+            ];
+
+            // Update search query in SearchService
+            vm.updateSearchQuery = function () {
+                if (vm.searchQuery) {
+                    SearchService.setQuery(vm.searchQuery);
+                    $scope.$broadcast('searchQueryUpdated', vm.searchQuery); // Notify child components
+                }
+            };
+
+            // Update selected filter in FilterService
+            vm.updateFilter = function () {
+                if (vm.selectedFilter) {
+                    FilterService.setFilter(vm.selectedFilter);
+                    const isMostPopular = vm.selectedFilter === 'Most Popular Movies';
+                    $scope.$broadcast('toggleMoviesSection', isMostPopular); // Toggle visibility for movies
+                }
+            };                      
+            
+        }]
+    });

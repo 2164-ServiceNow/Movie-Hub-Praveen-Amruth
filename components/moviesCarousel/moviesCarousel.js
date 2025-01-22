@@ -1,74 +1,92 @@
 angular.module('moviesCarousel', [])
+    .filter('capitalize', function () {
+        return function (input) {
+            if (!input) return input;
+            return input.charAt(0).toUpperCase() + input.slice(1);
+        };
+    })
     .component('moviesCarousel', {
         templateUrl: 'components/moviesCarousel/moviesCarousel.html',
-        controller: ['$http', '$timeout', '$rootScope', 'SearchService', function ($http, $timeout, $rootScope, SearchService) {
-            const vm = this;
+        controller: ['$http', '$timeout', '$rootScope', 'SearchService', 'MovieService', '$location', 'FilterService',
+            function ($http, $timeout, $rootScope, SearchService, MovieService, $location, FilterService) {
+                const vm = this;
 
-            // API URLs
-            const apiUrls = {
-                animation: 'https://api.sampleapis.com/movies/animation',
-                comedy: 'https://api.sampleapis.com/movies/comedy',
-                horror: 'https://api.sampleapis.com/movies/horror',
-                family: 'https://api.sampleapis.com/movies/family'
-            };
+                const apiUrls = {
+                    animation: 'https://api.sampleapis.com/movies/animation',
+                    comedy: 'https://api.sampleapis.com/movies/comedy',
+                    horror: 'https://api.sampleapis.com/movies/horror',
+                    family: 'https://api.sampleapis.com/movies/family'
+                };
 
-            // Movies data
-            vm.moviesData = {
-                animation: [],
-                comedy: [],
-                horror: [],
-                family: []
-            };
+                vm.moviesData = {};
+                vm.filteredMovies = {};
+                vm.selectedFilter = '';
+                vm.loading = true;
 
-            // Filtered movies based on search query
-            vm.filteredMovies = {
-                animation: [],
-                comedy: [],
-                horror: [],
-                family: []
-            };
+                vm.fetchMovies = function () {
+                    vm.loading = true;
+                    const categoryPromises = Object.entries(apiUrls).map(([category, url]) => {
+                        return $http.get(url)
+                            .then(response => {
+                                vm.moviesData[category] = response.data.map(movie => ({
+                                    title: movie.title,
+                                    posterURL: movie.posterURL
+                                }));
+                                vm.filterMovies();
+                            })
+                            .catch(error => {
+                                console.error(`Error fetching ${category} movies:`, error);
+                                vm.moviesData[category] = [];
+                            });
+                    });
 
-            // Fetch movies for a specific category
-            vm.fetchMovies = function (category, url) {
-                $http.get(url).then(response => {
-                    console.log(response.data);
-                    vm.moviesData[category] = response.data.map(movie => ({
-                        title: movie.title,
-                        posterURL: movie.posterURL
-                    }));
-                    vm.filterMovies(); // Re-filter movies when new data is fetched
-                }).catch(error => {
-                    console.error(`Error fetching ${category} movies:`, error);
-                });
-            };
+                    Promise.all(categoryPromises).finally(() => {
+                        vm.loading = false;
+                    });
+                };
 
-            // Filter movies based on the search query
-            vm.filterMovies = function () {
-                const query = SearchService.getQuery().toLowerCase();
-                
-                Object.keys(vm.moviesData).forEach(category => {
-                    vm.filteredMovies[category] = vm.moviesData[category].filter(movie =>
-                        movie.title.toLowerCase().includes(query)
-                    );
-                });
-            };
+                vm.filterMovies = function () {
+                    const query = SearchService.getQuery().toLowerCase();
+                    const selectedCategory = vm.selectedFilter.toLowerCase();
 
-            // Initialize data on component load
-            vm.$onInit = function () {
-                Object.entries(apiUrls).forEach(([category, url]) => {
-                    vm.fetchMovies(category, url);
-                });
+                    Object.keys(vm.moviesData).forEach(category => {
+                        const searchFiltered = vm.moviesData[category].filter(movie =>
+                            movie.title.toLowerCase().includes(query)
+                        );
 
-                // Watch for search query changes and filter movies
-                $rootScope.$on('searchQueryUpdated', function (event, query) {
+                        vm.filteredMovies[category] =
+                            !selectedCategory || selectedCategory === category
+                                ? searchFiltered
+                                : [];
+                    });
+                };
+
+                $rootScope.$on('filterUpdated', (event, filter) => {
+                    vm.selectedFilter = filter;
                     vm.filterMovies();
                 });
-            };
 
-            // Scroll movies row horizontally
-            vm.scrollRight = function (category) {
-                const row = document.querySelector(`.${category}-row`);
-                row.scrollBy({ left: 300, behavior: 'smooth' });
-            };
-        }]
+                $rootScope.$on('searchQueryUpdated', (event, query) => {
+                    vm.filterMovies();
+                });
+
+                vm.scrollRight = function (category) {
+                    const row = document.querySelector(`.${category}-row`);
+                    row.scrollBy({ left: 300, behavior: 'smooth' });
+                };
+
+                vm.hasNoMovies = function () {
+                    return Object.values(vm.filteredMovies).every(movies => !movies.length);
+                };
+
+                vm.showMovieDetails = function (movie) {
+                    MovieService.setSelectedMovie(movie); // Store the selected movie in MovieService
+                    $location.path('/movies-carousel-moviedetails'); // Navigate to the movie details page
+                };
+
+                vm.$onInit = function () {
+                    vm.fetchMovies();
+                };
+            }
+        ]
     });

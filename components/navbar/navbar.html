@@ -32,11 +32,38 @@
                     <i class="fa-solid fa-person-running"></i>
                     Sign In
                 </span>
-            </button>
-            <button class="navbar-option">
-                <i class="fa-solid fa-filter"></i>
-                Filters
-            </button>
+            </button>   
+
+            <!-- Filters Section -->
+            <div class="navbar-filter">
+                <label for="filter-select" class="filter-label">
+                    <i class="fa-solid fa-filter"></i> Filters
+                </label>
+                <select 
+                    id="filter-select" 
+                    class="filter-select" 
+                    ng-model="$ctrl.selectedFilter" 
+                    ng-change="$ctrl.updateFilter()"
+                >
+                    <!-- <option value="mostPopular">Most Popular Movies</option>
+                    <option value="topBoxOffice">Top Box Office Movies</option> -->
+                    <option value="animation">Animation Movies</option>
+                    <option value="comedy">Comedy Movies</option>
+                    <option value="horror">Horror Movies</option>
+                    <option value="family">Family Movies</option>
+                </select>
+
+            </div>
         </div>
     </div>
 </nav>
+
+<carousel></carousel>
+
+<movies></movies>
+
+<top-box-office></top-box-office>
+
+<movies-carousel></movies-carousel>
+
+<app-footer></app-footer>

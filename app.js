@@ -13,16 +13,13 @@ angular.module('movieHub', [
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/', {
-                template: '<carousel></carousel>'
+                template: '<navbar></navbar>'
             })
-            .when('/movies', {
-                template: '<h1>Movies List</h1><p>Here, you can browse all the movies.</p>'
+            .when('/movie-details', {
+                template: '<movie-details></movie-details>',
             })
-            .when('/search', {
-                template: '<h1>Search Movies</h1><p>Search for movies by title.</p>'
-            })
-            .when('/watchlist', {
-                template: '<h1>Your Watchlist</h1><p>Manage your favorite movies here.</p>'
+            .when('/movies-carousel-moviedetails', {
+                template: '<movies-carousel-moviedetails></movies-carousel-moviedetails>',
             })
             .otherwise({
                 redirectTo: '/'

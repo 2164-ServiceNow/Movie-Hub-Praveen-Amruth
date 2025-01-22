@@ -1,7 +1,7 @@
 angular.module('topBoxOffice', ['movieHub'])
 .component('topBoxOffice', {
     templateUrl: 'components/top-box-office/top-box-office.html',
-    controller: ['$http', '$scope', 'SearchService', function ($http, $scope, SearchService) {
+    controller: ['$http', '$scope', '$location', 'MovieService', function ($http, $scope, $location, MovieService) {
         const vm = this;
         vm.movies = [];
         vm.filteredMovies = [];
@@ -22,7 +22,12 @@ angular.module('topBoxOffice', ['movieHub'])
                     plot: movie.Plot,
                     rating: movie.imdbRating,
                     poster: movie.Images[0],
-                    images: movie.Images, // Additional images if needed
+                    images: movie.Images,
+                    genre: movie.Genre,
+                    director: movie.Director,
+                    actors: movie.Actors,
+                    language: movie.Language,
+                    awards: movie.Awards
                 }));
 
                 // Initially set filteredMovies to all movies
@@ -35,12 +40,18 @@ angular.module('topBoxOffice', ['movieHub'])
         // Update filteredMovies based on the search query
         vm.updateFilteredMovies = function () {
             if (vm.searchQuery) {
-                vm.filteredMovies = vm.movies.filter(movie => 
+                vm.filteredMovies = vm.movies.filter(movie =>
                     movie.title.toLowerCase().includes(vm.searchQuery.toLowerCase())
                 );
             } else {
                 vm.filteredMovies = vm.movies; // If no search query, show all movies
             }
+        };
+
+        // Navigate to movie details page
+        vm.showMovieDetails = function (movie) {
+            MovieService.setSelectedMovie(movie); // Use MovieService to store the selected movie
+            $location.path('/movie-details'); // Navigate to the details page
         };
 
         // Listen for search query updates from the SearchService
