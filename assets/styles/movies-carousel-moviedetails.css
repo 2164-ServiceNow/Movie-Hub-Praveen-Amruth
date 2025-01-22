@@ -1,0 +1,80 @@
+/* Styles for the Movie Details Page */
+.movie-details-movie-carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000; /* Black background */
+    padding: 20px;
+    color: #fff; /* White text for contrast */
+}
+
+/* Container for the movie details */
+.movie-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    max-width: 800px;
+    background-color: #222; /* Dark grey background for the container */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 100%;
+}
+
+/* Styling the title */
+.movie-title-movie-carousel{
+    font-size: 2.8em;
+    color: #f1c40f; /* Golden color for the title */
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Styling the movie poster */
+.movie-poster {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover effect for the poster */
+.movie-poster:hover {
+    transform: scale(1.05);
+}
+
+/* Styling the movie information section */
+.movie-info {
+    text-align: center; /* Center the content */
+    color: #ecf0f1; /* Light grey text for better readability */
+}
+
+/* Error message styles */
+.error-message {
+    color: #e74c3c; /* Red color for error messages */
+    font-size: 1.5em;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Optional: Add some responsive behavior for small screens */
+@media (max-width: 768px) {
+    .movie-details-container {
+        padding: 20px;
+        width: 90%;
+    }
+
+    .movie-title {
+        font-size: 2.2em;
+    }
+
+    .movie-poster {
+        max-width: 100%;
+    }
+}

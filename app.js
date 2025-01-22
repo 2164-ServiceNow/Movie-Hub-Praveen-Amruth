@@ -13,7 +13,13 @@ angular.module('movieHub', [
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/', {
-                template: '<carousel></carousel>'
+                template: '<navbar></navbar>'
+            })
+            .when('/movie-details', {
+                template: '<movie-details></movie-details>',
+            })
+            .when('/movies-carousel-moviedetails', {
+                template: '<movies-carousel-moviedetails></movies-carousel-moviedetails>',
             })
             .otherwise({
                 redirectTo: '/'

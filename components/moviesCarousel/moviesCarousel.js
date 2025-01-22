@@ -7,8 +7,8 @@ angular.module('moviesCarousel', [])
     })
     .component('moviesCarousel', {
         templateUrl: 'components/moviesCarousel/moviesCarousel.html',
-        controller: ['$http', '$timeout', '$rootScope', 'SearchService', 'FilterService', 
-            function ($http, $timeout, $rootScope, SearchService, FilterService) {
+        controller: ['$http', '$timeout', '$rootScope', 'SearchService', 'MovieService', '$location', 'FilterService',
+            function ($http, $timeout, $rootScope, SearchService, MovieService, $location, FilterService) {
                 const vm = this;
 
                 const apiUrls = {
@@ -77,6 +77,11 @@ angular.module('moviesCarousel', [])
 
                 vm.hasNoMovies = function () {
                     return Object.values(vm.filteredMovies).every(movies => !movies.length);
+                };
+
+                vm.showMovieDetails = function (movie) {
+                    MovieService.setSelectedMovie(movie); // Store the selected movie in MovieService
+                    $location.path('/movies-carousel-moviedetails'); // Navigate to the movie details page
                 };
 
                 vm.$onInit = function () {

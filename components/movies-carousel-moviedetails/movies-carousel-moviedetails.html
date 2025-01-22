@@ -1,0 +1,12 @@
+<div class="movie-details-movie-carousel" ng-if="!$ctrl.loading">
+    <div class="movie-details-container">
+        <div class="movie-info">
+            <h2 class="movie-title-movie-carousel">{{ $ctrl.movie.title }}</h2>
+            <img ng-src="{{ $ctrl.movie.posterURL }}" alt="{{ $ctrl.movie.title }}" class="movie-poster">       
+        </div>
+    </div>
+</div>
+
+<div class="loader" ng-if="$ctrl.loading">
+    <p>Loading movie details...</p>
+</div>

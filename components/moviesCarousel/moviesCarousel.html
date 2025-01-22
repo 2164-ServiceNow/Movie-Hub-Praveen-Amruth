@@ -4,10 +4,10 @@
             {{category | capitalize}} Movies <span class="greater-icon">&gt;</span>
         </h2>
         <div class="movies-row {{category}}-row">
-            <div class="movie-card" ng-repeat="movie in movies">
+            <div class="movie-card" ng-repeat="movie in movies" ng-click="$ctrl.showMovieDetails(movie)">
                 <img ng-src="{{movie.posterURL}}" alt="{{movie.title}}" class="movie-image">
                 <p class="movie-title">{{movie.title}}</p>
-            </div>
+            </div>            
             <button class="scroll-button" ng-click="$ctrl.scrollRight(category)">❯</button>
         </div>
     </div>
