@@ -1,0 +1,32 @@
+<div ng-controller="WelcomeController">
+     <!-- Welcome Page Content -->
+     <div class="welcome-page">
+        <!-- Background Image -->
+        <div class="background-image"></div>
+
+        <!-- Content Section -->
+        <div class="content">
+            <h1 class="title">Movie Hub</h1>
+            <p class="description">Your go-to place for all the latest movies and reviews.</p>
+            <div class="get-started">
+                <p>Get Started with &rarr;</p>
+                <!-- Button to Navigate to Navbar -->
+                <button ng-click="goToNavbar()" class="get-started-button">Get Started</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign In and Sign Up Options at Top Right -->
+    <div class="auth-options">
+        <div class="logo">
+            <i class="fa-solid fa-film fa-lg" style="color: red;"></i>
+            <span class="logo-text">MovieHub</span>
+        </div>
+        <div class="auth-links">
+            <a href="#/sign-in">Sign In<i class="bi bi-box-arrow-in-left"></i></a> | 
+            <a href="#/sign-up">Sign Up<i class="bi bi-box-arrow-in-right"></i></a>
+        </div>
+    </div>
+
+</div>
+   

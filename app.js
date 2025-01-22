@@ -12,7 +12,10 @@ angular.module('movieHub', [
     // Configure routes
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
-            .when('/', {
+            // .when('/', {
+            //     templateUrl: 'index.html'
+            // })
+            .when('/navbar', {
                 template: '<navbar></navbar>'
             })
             .when('/movie-details', {
@@ -27,7 +30,15 @@ angular.module('movieHub', [
     }])
 
     // Define a main controller (optional, for app-wide logic)
-    .controller('MainController', ['$scope', function ($scope) {
-        $scope.appName = 'MovieHub';
-        console.log('MainController initialized for MovieHub!');
+    // .controller('MainController', ['$scope', function ($scope) {
+    //     $scope.appName = 'MovieHub';
+    //     console.log('MainController initialized for MovieHub!');
+    // }]);
+
+    .controller('WelcomeController', ['$scope', '$location', function ($scope, $location) {
+        // Function to navigate to the Navbar component
+        console.log('WelcomeController initialized for MovieHub!');
+        $scope.goToNavbar = function () {
+            $location.path('/navbar');  // Assuming '/navbar' is the route for the navbar component
+        };
     }]);
