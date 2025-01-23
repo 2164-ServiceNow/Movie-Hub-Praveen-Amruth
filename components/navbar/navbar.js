@@ -1,7 +1,7 @@
 angular.module('navbar', ['movieHub'])
     .component('navbar', {
         templateUrl: 'components/navbar/navbar.html',
-        controller: ['$scope', 'SearchService', 'FilterService', function ($scope, SearchService, FilterService) {
+        controller: ['$scope', 'SearchService', 'FilterService',  '$location', function ($scope, SearchService, FilterService,  $location) {
             const vm = this;
 
             // Initialize variables
@@ -31,7 +31,11 @@ angular.module('navbar', ['movieHub'])
                     const isMostPopular = vm.selectedFilter === 'Most Popular Movies';
                     $scope.$broadcast('toggleMoviesSection', isMostPopular); // Toggle visibility for movies
                 }
-            };                      
+            };       
+            
+            vm.navigateSignInPage = function () {
+                $location.path('/sign-in'); 
+            };
             
         }]
     });

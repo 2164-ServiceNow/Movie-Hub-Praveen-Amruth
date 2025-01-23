@@ -10,7 +10,7 @@ angular.module('carousel', [])
                 { id: 1, src: 'assets/images/banner-1.avif', alt: 'Slide 1' },
                 { id: 2, src: 'assets/images/banner-2.avif', alt: 'Slide 2' },
                 { id: 3, src: 'assets/images/banner-1.avif', alt: 'Slide 3' },
-                { id: 4, src: 'assets/images/banner-2.avif', alt: 'Slide 4' }
+                { id: 4, src: 'assets/images/banner-3.avif', alt: 'Slide 4' }
             ];
 
             // Current slide index

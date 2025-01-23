@@ -1,0 +1,93 @@
+/* Styles for the Authentication Pages */
+.auth-page {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: url('./../images/signupimg.jpg') no-repeat center center;
+    background-size: cover;
+    backdrop-filter: blur(5px); /* Light blur effect */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Form Container */
+.auth-page .form-container {
+    background-color: rgba(0, 0, 0, 0.7); /* Light transparent black background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 400px;
+    color: white;
+    text-align: center;
+}
+
+/* Header */
+.auth-page h1 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: white;
+}
+
+/* Form Styles */
+.auth-page form {
+    width: 100%;
+}
+
+.auth-page label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.auth-page input {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 15px;
+    /* margin-right: 65px; */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+}
+
+.auth-page input:focus {
+    outline: none;
+    border-color: red;
+}
+
+/* Buttons */
+.auth-page button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: red;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.auth-page button:hover {
+    background-color: darkred;
+}
+
+/* Links */
+.auth-page p {
+    margin-top: 15px;
+}
+
+.auth-page a {
+    color: red;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.auth-page a:hover {
+    color: darkred;
+}
