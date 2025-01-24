@@ -17,6 +17,11 @@
                 <p class="movie-year">Year: {{movie.year}}</p>
                 <p class="movie-description">{{movie.plot}}</p>
                 <p class="movie-rating">⭐ IMDb: {{movie.rating}}</p>
+                 <!-- Wishlist Icon -->
+                 <i class="fa-solid fa-heart"
+                 ng-class="{'wishlist-active': movie.wishlistActive}"
+                 ng-click="$ctrl.toggleWishlist(movie); $event.stopPropagation()">
+              </i>
             </div>
         </div>
     </div>

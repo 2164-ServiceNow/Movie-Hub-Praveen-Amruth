@@ -36,6 +36,10 @@ angular.module('navbar', ['movieHub'])
             vm.navigateSignInPage = function () {
                 $location.path('/sign-in'); 
             };
+
+            vm.navigateWishlistPage = function () {
+                $location.path('/wishlist');
+            };            
             
         }]
     });

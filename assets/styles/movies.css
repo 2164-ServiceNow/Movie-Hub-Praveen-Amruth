@@ -103,3 +103,18 @@
 .movie-link:hover {
     text-decoration: underline;
 }
+
+.fa-heart {
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #ccc; /* Default color */
+    transition: color 0.3s;
+}
+
+.fa-heart.wishlist-active {
+    color: #e74c3c; /* Red color for active state */
+}
+
+.wishlist-active {
+    color: red;
+}

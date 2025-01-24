@@ -7,6 +7,10 @@
             <div class="movie-card" ng-repeat="movie in movies" ng-click="$ctrl.showMovieDetails(movie)">
                 <img ng-src="{{movie.posterURL}}" alt="{{movie.title}}" class="movie-image">
                 <p class="movie-title">{{movie.title}}</p>
+                <!-- Heart Icon -->
+                <i class="fa-solid fa-heart"
+                   ng-class="{'wishlist-active': movie.wishlistActive}"
+                   ng-click="$ctrl.toggleWishlist(movie); $event.stopPropagation()"></i>
             </div>            
             <button class="scroll-button" ng-click="$ctrl.scrollRight(category)">❯</button>
         </div>
