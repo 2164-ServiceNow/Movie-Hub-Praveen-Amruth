@@ -6,7 +6,7 @@
             <div class="movie-details">
                 <h2 class="movie-title">{{movie.title}}</h2>
                 <p class="movie-description">{{movie.plot}}</p>
-                <p class="movie-rating">Rating: {{movie.rating}}</p>
+                <p class="movie-rating">Rating ⭐ : {{movie.rating}}</p>
                 <i class="fa-solid fa-heart"
                    ng-class="{'wishlist-active': movie.wishlistActive}"
                    ng-click="$ctrl.toggleWishlist(movie); $event.stopPropagation()"></i>
