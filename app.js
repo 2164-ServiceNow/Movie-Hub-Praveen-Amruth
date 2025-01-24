@@ -33,6 +33,9 @@ angular.module('movieHub', [
         .when('/movies-carousel-moviedetails', {
             template: '<movies-carousel-moviedetails></movies-carousel-moviedetails>'
         })
+        .when('/wishlist', {
+            template: '<wishlist></wishlist>',
+        })
         .otherwise({
             redirectTo: '/'
         });

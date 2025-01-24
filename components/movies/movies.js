@@ -1,7 +1,7 @@
-angular.module('movies', [])
+angular.module('movies', ['movieHub'])
     .component('movies', {
         templateUrl: 'components/movies/movies.html',
-        controller: ['$http', '$scope', 'SearchService', 'FilterService', function ($http, $scope, SearchService, FilterService) {
+        controller: ['$http', '$scope', 'SearchService', 'WishlistService', 'FilterService', function ($http, $scope, SearchService, WishlistService, FilterService) {
             const vm = this;
             vm.movies = [];
             vm.filteredMovies = [];
@@ -30,11 +30,11 @@ angular.module('movies', [])
                 'assets/images/moviesimgs/img19.jpg',
                 'assets/images/moviesimgs/img20.jpg'
             ];
-            
+
             const proxyUrl = "https://api.allorigins.win/get?url=";
             const apiUrl = encodeURIComponent("https://www.freetestapi.com/api/v1/movies");
 
-            // Fetch movies
+            // Fetch movies and initialize wishlistActive
             vm.fetchMovies = function () {
                 $http.get(proxyUrl + apiUrl).then(response => {
                     try {
@@ -42,6 +42,7 @@ angular.module('movies', [])
                         vm.movies = parsedData.map((movie, index) => ({
                             ...movie,
                             poster: localImages[index % localImages.length],
+                            wishlistActive: WishlistService.getWishlistMovie().some(wishlistMovie => wishlistMovie.id === movie.id)
                         }));
                         vm.filteredMovies = vm.movies; // Initialize filtered movies
                     } catch (parseError) {
@@ -52,7 +53,7 @@ angular.module('movies', [])
                 });
             };
 
-            // Filter movies when search query changes
+            // Update filtered movies based on search query
             $scope.$on('searchQueryUpdated', function (event, query) {
                 vm.searchQuery = query;
                 vm.filteredMovies = vm.movies.filter(movie =>
@@ -60,12 +61,28 @@ angular.module('movies', [])
                 );
             });
 
-            // Listen for filter update and toggle movie section visibility
+            // Toggle visibility of most popular movies
             $scope.$on('toggleMoviesSection', function (event, isMostPopular) {
                 vm.showMostPopularMovies = isMostPopular; // Update visibility based on filter
             });
 
-            // Initialize data on component load
+            // Toggle wishlist status
+            vm.toggleWishlist = function (movie) {
+                if (movie.wishlistActive) {
+                    WishlistService.removeFromWishlist(movie);
+                    movie.wishlistActive = false; // Update the property
+                    console.log(`Removed from wishlist: ${movie.title}`);
+                } else {
+                    WishlistService.addToWishlist(movie);
+                    movie.wishlistActive = true; // Update the property
+                    console.log(`Added to wishlist: ${movie.title}`);
+                }
+            
+                // Log the entire wishlist
+                WishlistService.logWishlist();
+            };            
+
+            // Initialize the component
             vm.$onInit = function () {
                 vm.fetchMovies();
             };

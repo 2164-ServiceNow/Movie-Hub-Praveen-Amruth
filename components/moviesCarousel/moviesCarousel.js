@@ -7,8 +7,8 @@ angular.module('moviesCarousel', [])
     })
     .component('moviesCarousel', {
         templateUrl: 'components/moviesCarousel/moviesCarousel.html',
-        controller: ['$http', '$timeout', '$rootScope', 'SearchService', 'MovieService', '$location', 'FilterService',
-            function ($http, $timeout, $rootScope, SearchService, MovieService, $location, FilterService) {
+        controller: ['$http', '$timeout', '$rootScope', 'SearchService', 'MovieService', '$location', 'FilterService', 'WishlistService',
+            function ($http, $timeout, $rootScope, SearchService, MovieService, $location, FilterService, WishlistService) {
                 const vm = this;
 
                 const apiUrls = {
@@ -30,7 +30,8 @@ angular.module('moviesCarousel', [])
                             .then(response => {
                                 vm.moviesData[category] = response.data.map(movie => ({
                                     title: movie.title,
-                                    posterURL: movie.posterURL
+                                    posterURL: movie.posterURL,
+                                    wishlistActive: false // Initialize wishlistActive property
                                 }));
                                 vm.filterMovies();
                             })
@@ -82,6 +83,18 @@ angular.module('moviesCarousel', [])
                 vm.showMovieDetails = function (movie) {
                     MovieService.setSelectedMovie(movie); // Store the selected movie in MovieService
                     $location.path('/movies-carousel-moviedetails'); // Navigate to the movie details page
+                };
+
+                // Wishlist Functions
+                vm.toggleWishlist = function (movie) {
+                    movie.wishlistActive = !movie.wishlistActive;
+                    if (movie.wishlistActive) {
+                        WishlistService.addToWishlist(movie);
+                    } else {
+                        WishlistService.removeFromWishlist(movie);
+                    }
+
+                    WishlistService.logWishlist(); 
                 };
 
                 vm.$onInit = function () {
