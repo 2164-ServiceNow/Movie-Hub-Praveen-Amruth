@@ -1,0 +1,19 @@
+<div class="wishlist-page">
+    <h1 class="wishlist-title">Your Wishlist</h1>
+    <div class="wishlist-container">
+        <div class="movie-card" ng-repeat="movie in $ctrl.wishlist">
+            <img ng-src="{{movie.posterURL}}" alt="{{movie.title}}" class="movie-image">
+            <div class="movie-details">
+                <h2 class="movie-title">{{movie.title}}</h2>
+                <p class="movie-description">{{movie.plot}}</p>
+                <p class="movie-rating">Rating ⭐ : {{movie.rating}}</p>
+                <i class="fa-solid fa-heart"
+                   ng-class="{'wishlist-active': movie.wishlistActive}"
+                   ng-click="$ctrl.toggleWishlist(movie); $event.stopPropagation()"></i>
+            </div>
+        </div>
+        <div class="no-wishlist-movies" ng-if="!$ctrl.wishlist.length">
+            <p>Your wishlist is empty. Start adding movies!</p>
+        </div>
+    </div>
+</div>

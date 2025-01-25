@@ -1,0 +1,19 @@
+<div class="top-boxoffice-movies-details movie-details-page" ng-if="$ctrl.movie" id="movie-details">
+    <div class="movie-details-container">
+        <h2 class="movie-title">{{$ctrl.movie.title}}</h2>
+        <img ng-src="{{$ctrl.movie.poster}}" alt="{{$ctrl.movie.title}}" class="movie-poster">
+        <div class="movie-info">
+            <p><strong>Year:</strong> {{$ctrl.movie.year}}</p>
+            <p><strong>Plot:</strong> {{$ctrl.movie.plot}}</p>
+            <p><strong>Rating:</strong> {{$ctrl.movie.rating}}</p>
+            <p><strong>Genre:</strong> {{$ctrl.movie.genre}}</p>
+            <p><strong>Director:</strong> {{$ctrl.movie.director}}</p>
+            <p><strong>Actors:</strong> {{$ctrl.movie.actors}}</p>
+            <p><strong>Language:</strong> {{$ctrl.movie.language}}</p>
+            <p><strong>Awards:</strong> {{$ctrl.movie.awards}}</p>
+        </div>
+    </div>
+</div>
+<div ng-if="$ctrl.errorMessage" class="error-message">
+    <p>{{$ctrl.errorMessage}}</p>
+</div>

@@ -1,0 +1,62 @@
+.topBoxOffice-section {
+  padding: 20px;
+  background-color: black; /* Light blue background for the movies section */
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.topBoxOffice-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.pipe-icon {
+  color: #ff5733;
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.topBoxOffice-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  color: white;
+}
+
+.topBoxOffice-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.movie-card {
+  width: 200px;
+  background-color: black;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgb(236, 231, 231);
+  overflow: hidden;
+  text-align: center;
+}
+
+.movie-image {
+  width: 100%;
+  height: auto;
+}
+
+.movie-details {
+  padding: 10px;
+}
+
+.movie-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.movie-year,
+.movie-description,
+.movie-rating {
+  font-size: 14px;
+  margin-bottom: 5px;
+}

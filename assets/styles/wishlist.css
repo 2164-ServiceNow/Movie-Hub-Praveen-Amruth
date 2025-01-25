@@ -1,0 +1,65 @@
+.wishlist-page {
+    padding: 20px;
+    text-align: center;
+}
+
+.wishlist-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.wishlist-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+/* 
+.movie-card {
+    width: 200px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.movie-image {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+}
+
+.movie-details {
+    padding: 10px;
+}
+
+.movie-title {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.movie-description,
+.movie-rating {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #555;
+} */
+
+.fa-heart {
+    cursor: pointer;
+    font-size: 20px;
+    color: gray;
+    transition: color 0.3s ease;
+}
+
+.fa-heart.wishlist-active {
+    color: red;
+}
+
+.no-wishlist-movies {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #666;
+}
